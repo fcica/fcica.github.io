@@ -17,7 +17,24 @@ Licensed under MIT (https://github.com/franky920920/QRcode_JavaScript_Scanner/bl
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/3.3.3/adapter.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
 <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
-
+ <style>
+            body {
+            margin: 0;
+            padding: 0;
+            overflow:hidden;
+            }
+            #preview {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            min-width: 100%; 
+            min-height: 100%;
+            margin: auto;
+            overflow: auto;
+            }
+        </style>
 <div class="container center">
     <div id="app">
         <section class="cameras">
@@ -45,7 +62,7 @@ Licensed under MIT (https://github.com/franky920920/QRcode_JavaScript_Scanner/bl
                 <li v-for="scan in scans" :key="scan.date" :title="scan.content">{{ scan.content }}</li>
             </transition-group>
         </section>
-        <div class="preview-container">
+        <div class="preview-container ">
             <video id="preview" style="display: none;"></video>
             <canvas id="previewCanvas"></canvas>
         </div>
