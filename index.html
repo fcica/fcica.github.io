@@ -37,7 +37,7 @@ Licensed under MIT (https://github.com/franky920920/QRcode_JavaScript_Scanner/bl
         </style>
 <div class="container center">
     <div id="app">
-        <section class="cameras">
+        <!--section class="cameras">
             <h3>
                 <button id="cam_list_control" class="btn btn-primary" onclick="toggle_btn()">List Camera</button>
             </h3>
@@ -52,11 +52,11 @@ Licensed under MIT (https://github.com/franky920920/QRcode_JavaScript_Scanner/bl
                     </button>
                 </li>
             </ul>
-        </section>
+        </section-->
         <section class="scans"> 
-            <ul v-if="scans.length === 0">
+            <!--ul v-if="scans.length === 0">
                 <li class="empty">No scans yet</li>
-            </ul>
+            </ul-->
             <transition-group name="scans" tag="ul">
                 <li v-for="scan in scans" :key="scan.date" :title="scan.content">{{ scan.content }}</li>
             </transition-group>
