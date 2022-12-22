@@ -33,7 +33,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: url(bg.jpg);
+  background: #CCC;
   background-repeat: no-repeat;
   background-size: cover;
 }
