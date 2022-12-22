@@ -2,12 +2,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta charset="UTF-8" />
     <title>Tracking</title>
     <script src='https://cdn.frankychen.net/legacy/vendor/jquery/jquery.min.js'></script>
     <script src="https://cdn.frankychen.net/legacy/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.frankychen.net/legacy/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <!--!
 Copyright 2020 Franky Chen
@@ -35,7 +37,10 @@ Licensed under MIT (https://github.com/franky920920/QRcode_JavaScript_Scanner/bl
             overflow: auto;
             }
         </style>
-<div class="container center">
+<button id="lock" onclick=" screenLock()">Lock</button>
+  <div class="lockscreen unlock">
+    <i class="fi-rr-lock" ondblclick="screenUnlock()"></i>
+    <div class="container center">
     <div id="app">
         <!--section class="cameras">
             <h3>
@@ -67,6 +72,9 @@ Licensed under MIT (https://github.com/franky920920/QRcode_JavaScript_Scanner/bl
         </div>
     </div>
 </div>
+  </div>
+
+<script src="main.js"></script>
 <script>
     let opts = {
         continuous: true
