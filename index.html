@@ -45,16 +45,15 @@ Licensed under MIT (https://github.com/franky920920/QRcode_JavaScript_Scanner/bl
                 <li v-if="cameras.length === 0" class="empty">No cameras found</li>
                 <li v-for="camera in cameras">
                     <button class="btn btn-default" style="margin: 1%">
-                        <span v-if="camera.id != activeCameraId" :title="formatName(camera.name)">{{ formatName(camera.name) }}</span>
-                        <span v-if="camera.id == activeCameraId" :title="formatName(camera.name)"  class="active">
+                        <span v-if="camera.id == activeCameraId" :title="formatName(camera.name)"  class="active">{{ formatName(camera.name) }}</span>
+                        <span v-if="camera.id != activeCameraId" :title="formatName(camera.name)" >
                             <a @click.stop="selectCamera(camera)">{{ formatName(camera.name) }}</a>
                         </span>
                     </button>
                 </li>
             </ul>
         </section>
-        <section class="scans">
-            <h2>Scans</h2>
+        <section class="scans"> 
             <ul v-if="scans.length === 0">
                 <li class="empty">No scans yet</li>
             </ul>
@@ -104,7 +103,7 @@ Licensed under MIT (https://github.com/franky920920/QRcode_JavaScript_Scanner/bl
                     self.cameras = cameras;
                     if (cameras.length > 0) {
                         self.activeCameraId = cameras[0].id;
-                        self.scanner.start(cameras[0]);
+                        self.scanner.start(cameras[1]);
                     } else {
                         console.error('No cameras found.');
                     }
