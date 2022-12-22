@@ -2,6 +2,7 @@ let elem = document.querySelector(".lockscreen");
 function screenLock() {
     elem.classList.add("lock")
     elem.classList.remove("unlock")
+    /*
     if (elem.requestFullscreen) {
         elem.requestFullscreen();
     } else if (elem.webkitRequestFullscreen) {
@@ -9,6 +10,7 @@ function screenLock() {
     } else if (elem.msRequestFullscreen) {
         elem.msRequestFullscreen();
     }
+    */
 }
 function screenUnlock() {
     elem.classList.add("unlock")
