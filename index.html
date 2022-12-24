@@ -52,6 +52,14 @@ Licensed under MIT (https://github.com/franky920920/QRcode_JavaScript_Scanner/bl
     </div>
 </div>
 <script>
+    const isValidUrl = (string) => {
+                try {
+                    new URL(string);
+                    return true;
+                } catch (_) {
+                    return false;
+                }
+            }
     let opts = {
         continuous: true
         , video: document.getElementById('preview')
@@ -80,7 +88,10 @@ Licensed under MIT (https://github.com/franky920920/QRcode_JavaScript_Scanner/bl
                     date: +(Date.now())
                     , content: content
                 });
-                dataProcess(content);
+                //dataProcess(content);
+                if (isValidUrl(content)) {
+                    window.location.replace(content);
+                }
             });
             Instascan.Camera.getCameras()
                 .then(function (cameras) {
