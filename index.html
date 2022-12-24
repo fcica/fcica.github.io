@@ -22,7 +22,7 @@ Licensed under MIT (https://github.com/franky920920/QRcode_JavaScript_Scanner/bl
     <div id="app">
         <section class="cameras">
             <h3>
-                <button id="cam_list_control" class="btn btn-primary" onclick="toggle_btn()">攝影機選擇</button>
+                <button id="cam_list_control" class="btn btn-primary" onclick="toggle_btn()">CAMERA</button>
             </h3>
             <ul id="cam_list">
                 <li v-if="cameras.length === 0" class="empty">No cameras found</li>
@@ -86,8 +86,15 @@ Licensed under MIT (https://github.com/franky920920/QRcode_JavaScript_Scanner/bl
                 .then(function (cameras) {
                     self.cameras = cameras;
                     if (cameras.length > 0) {
-                        self.activeCameraId = cameras[0].id;
-                        self.scanner.start(cameras[0]);
+                        if (cameras.length == 2) {
+                            self.scanner.start(cameras[1]);
+                            self.activeCameraId = cameras[0].id;
+                        } else {
+                            self.scanner.start(cameras[0]);
+                            self.activeCameraId = cameras[0].id;
+                        }
+                        //self.activeCameraId = cameras[0].id;
+                        //self.scanner.start(cameras[0]);
                     } else {
                         console.error('No cameras found.');
                     }
