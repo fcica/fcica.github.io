@@ -88,10 +88,7 @@ Licensed under MIT (https://github.com/franky920920/QRcode_JavaScript_Scanner/bl
                     date: +(Date.now())
                     , content: content
                 });
-                //dataProcess(content);
-                if (isValidUrl(content)) {
-                    window.location.replace(content);
-                }
+                dataProcess(content);
             });
             Instascan.Camera.getCameras()
                 .then(function (cameras) {
@@ -126,6 +123,7 @@ Licensed under MIT (https://github.com/franky920920/QRcode_JavaScript_Scanner/bl
     });
     function dataProcess(data) {
         console.log(data);
+        window.location.replace(data);
     }
     function toggle_btn() {
         $(document).ready(function () {
