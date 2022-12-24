@@ -1,15 +1,13 @@
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta charset="UTF-8" />
-    <title>Tracking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>qr</title>
     <script src='https://cdn.frankychen.net/legacy/vendor/jquery/jquery.min.js'></script>
     <script src="https://cdn.frankychen.net/legacy/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.frankychen.net/legacy/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css" />
-    <link rel="stylesheet" href="style.css" />
 </head>
 <!--!
 Copyright 2020 Franky Chen
@@ -19,62 +17,40 @@ Licensed under MIT (https://github.com/franky920920/QRcode_JavaScript_Scanner/bl
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/3.3.3/adapter.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
 <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
- <style>
-            body {
-            margin: 0;
-            padding: 0;
-            overflow:hidden;
-            }
-            #preview {
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            min-width: 100%; 
-            min-height: 100%;
-            margin: auto;
-            overflow: auto;
-            }
-        </style>
-<button id="lock" onclick=" screenLock()">UnLock</button>
-  <div class="lockscreen unlock">
-    <!--i class="fi-rr-lock" ondblclick="screenUnlock()"></i-->
-    <div class="container center">
+
+<div class="container">
     <div id="app">
-        <!--section class="cameras">
+        <section class="cameras">
             <h3>
-                <button id="cam_list_control" class="btn btn-primary" onclick="toggle_btn()">List Camera</button>
+                <button id="cam_list_control" class="btn btn-primary" onclick="toggle_btn()">攝影機選擇</button>
             </h3>
             <ul id="cam_list">
                 <li v-if="cameras.length === 0" class="empty">No cameras found</li>
                 <li v-for="camera in cameras">
                     <button class="btn btn-default" style="margin: 1%">
-                        <span v-if="camera.id == activeCameraId" :title="formatName(camera.name)"  class="active">{{ formatName(camera.name) }}</span>
-                        <span v-if="camera.id != activeCameraId" :title="formatName(camera.name)" >
+                        <span v-if="camera.id == activeCameraId" :title="formatName(camera.name)" class="active">{{ formatName(camera.name) }}</span>
+                        <span v-if="camera.id != activeCameraId" :title="formatName(camera.name)">
                             <a @click.stop="selectCamera(camera)">{{ formatName(camera.name) }}</a>
                         </span>
                     </button>
                 </li>
             </ul>
-        </section-->
-        <section class="scans"> 
-            <!--ul v-if="scans.length === 0">
+        </section>
+        <section class="scans">
+            <h2>Scans</h2>
+            <ul v-if="scans.length === 0">
                 <li class="empty">No scans yet</li>
-            </ul-->
+            </ul>
             <transition-group name="scans" tag="ul">
                 <li v-for="scan in scans" :key="scan.date" :title="scan.content">{{ scan.content }}</li>
             </transition-group>
         </section>
-        <div class="preview-container ">
+        <div class="preview-container">
             <video id="preview" style="display: none;"></video>
             <canvas id="previewCanvas"></canvas>
         </div>
     </div>
 </div>
-  </div>
-
-<script src="main.js"></script>
 <script>
     let opts = {
         continuous: true
@@ -95,7 +71,7 @@ Licensed under MIT (https://github.com/franky920920/QRcode_JavaScript_Scanner/bl
             var self = this;
             self.scanner = new Instascan.Scanner({
                 video: document.getElementById('preview')
-                //, scanPeriod: 1 
+                , scanPeriod: 1
                 , continuous: true
                 , mirror: false
             });
@@ -110,15 +86,8 @@ Licensed under MIT (https://github.com/franky920920/QRcode_JavaScript_Scanner/bl
                 .then(function (cameras) {
                     self.cameras = cameras;
                     if (cameras.length > 0) {
-                        if (cameras.length == 2) {
-                            self.scanner.start(cameras[1]);
-                            self.activeCameraId = cameras[0].id;
-                        } else {
-                            self.scanner.start(cameras[0]);
-                            self.activeCameraId = cameras[0].id;
-                        }
-                        //self.activeCameraId = cameras[0].id;
-                        //self.scanner.start(cameras[1]);
+                        self.activeCameraId = cameras[0].id;
+                        self.scanner.start(cameras[0]);
                     } else {
                         console.error('No cameras found.');
                     }
