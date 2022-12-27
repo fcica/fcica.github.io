@@ -95,10 +95,10 @@ Licensed under MIT (https://github.com/franky920920/QRcode_JavaScript_Scanner/bl
                     self.cameras = cameras;
                     if (cameras.length > 0) {
                         if (cameras.length == 2) {
-                            self.scanner.start(cameras[1]);
-                            self.activeCameraId = cameras[1].id;
-                        } else {
                             self.scanner.start(cameras[0]);
+                            self.activeCameraId = cameras[0].id;
+                        } else {
+                            self.scanner.start(cameras[1]);
                             self.activeCameraId = cameras[0].id;
                         }
                         //self.activeCameraId = cameras[0].id;
